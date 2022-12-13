@@ -44,8 +44,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "rest_framework",
-    "django_extensions",
+    "rest_framework",    
     "drf_spectacular"
 ]
 
@@ -168,11 +167,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
-
-GRAPH_MODELS = {
-  'all_applications': True,
-  'group_models': True,
-}
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Band Kamp',
