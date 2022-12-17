@@ -1,49 +1,82 @@
-# Band Kamp 
-## django-rest-api
-A REST api written in Django for people with deadlines
+# BandKamp Generic View - REST API - criação de playlist de músicas.
 
-## Technologies used
-* [Django](https://www.djangoproject.com/): The web framework for perfectionists with deadlines (Django builds better web apps with less code).
-* [DRF](www.django-rest-framework.org/): A powerful and flexible toolkit for building Web APIs
+### 📑 Sobre o projeto
+
+Esse projeto foi desenvolvido durante o 
+módulo 5 do curso de Desenvolvimento Web FullStack da Kenzie Academy Brasil, teve como desafio refatora-lo, em primeiro momento tive que migrar os serializers para utilizar os campos da model (ModelSerializer) e migrar o banco de dados de sqlite para o postgres, em seguida refatorar as views para utilizar as generics views fornecidas pelo [DRF](www.django-rest-framework.org/) onde se pode abstrair bastante trabalho para se construir views.
+
+A API tbm possui uma documentação feita pelo [Swagger-UI](https://band-kamp-mathsudre.onrender.com/api/docs/swagger-ui/) e [Redoc](https://band-kamp-mathsudre.onrender.com/api/docs/redoc/), nesses links você pode verificar os endpoints que a API possui.
+
+## Tecnologias utilizadas:
+* [Django](https://www.djangoproject.com/): O framework web para perfeccionistas com prazos (o Django constrói aplicativos web com menos código).
+* [DRF](www.django-rest-framework.org/): Um kit de ferramentas poderoso e flexível para criar APIs da Web.
+
+## Instalação dos pacotes de teste
+
+- Verifique se os pacotes `pytest` e/ou `pytest-testdox` estão instalados globalmente em seu sistema:
+```shell
+pip list
+```
+- Caso seja listado o `pytest` e/ou `pytest-testdox` e/ou `pytest-django` em seu ambiente global, utilize os seguintes comando para desinstalá-los globalmente:
+```shell
+pip uninstall pytest
+```
+
+```shell
+pip uninstall pytest-testdox
+```
+
+```shell
+pip uninstall pytest-django
+```
+
+A partir disso, prossiga com os passos:
+
+1. Crie seu ambiente virtual:
+```bash
+python -m venv venv
+```
+
+2. Ative seu venv:
+```bash
+# linux:
+source venv/bin/activate
+
+# windows:
+.\venv\Scripts\activate
+```
+
+3. Instale o pacote `pytest-testdox`:
+```shell
+pip install pytest-testdox pytest-django
+```
 
 
-## Installation
-* If you wish to run your own build, first ensure you have python globally installed in your computer. If not, you can get python [here](https://www.python.org").
-* After doing this, confirm that you have installed virtualenv globally as well. If not, run this:
-    ```bash
-        $ pip install virtualenv
-    ```
-* Then, Git clone this repo to your PC
-    ```bash
-        $ git clone https://github.com/gitgik/django-rest-api.git
-    ```
+4. Agora é só rodar os testes no diretório principal do projeto:
+```shell
+pytest --testdox -vvs
+```
 
-* #### Dependencies
-    1. Cd into your the cloned repo as such:
-        ```bash
-            $ cd django-rest-api
-        ```
-    2. Create and fire up your virtual environment:
-        ```bash
-            $ virtualenv  venv -p python3
-            $ source venv/bin/activate
-        ```
-    3. Install the dependencies needed to run the app:
-        ```bash
-            $ pip install -r requirements.txt
-        ```
-    4. Make those migrations work
-        ```bash
-            $ python manage.py makemigrations
-            $ python manage.py migrate
-        ```
+5. Caso queira um log mais resumido, basta executar com os testes sem as flags **verbose**:
+```shell
+pytest --testdox
+```
 
-* #### Run It
-    Fire up the server using this one simple command:
-    ```bash
-        $ python manage.py runserver
-    ```
-    You can now access the file api service on your browser by using
-    ```
-        http://localhost:8000/api/
-    ```
+## Rodando os testes por partes
+
+Caso você tenha interesse em rodar apenas um diretório de testes específico, pode utilizar o comando:
+
+- Rodando testes de users:
+```python
+pytest --testdox -vvs tests/users/
+```
+
+- Rodando testes de albums:
+```python
+pytest --testdox -vvs tests/albums/
+```
+
+- Rodando testes de songs:
+```python
+pytest --testdox -vvs tests/songs/
+```
