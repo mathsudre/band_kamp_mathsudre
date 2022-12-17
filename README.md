@@ -1,4 +1,5 @@
-# django-rest-api
+# Band Kamp 
+## django-rest-api
 A REST api written in Django for people with deadlines
 
 ## Technologies used
